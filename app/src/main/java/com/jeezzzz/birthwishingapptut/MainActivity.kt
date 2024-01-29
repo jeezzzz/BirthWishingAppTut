@@ -6,22 +6,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 
-
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var etName=findViewById<EditText>(R.id.etName)
-        var btnWish=findViewById<Button>(R.id.btnWish)
-        var text=etName.text.toString()
+        val editText = findViewById<EditText>(R.id.etName)
+        val button = findViewById<Button>(R.id.btnWish)
 
-        btnWish.setOnClickListener {
-            val intent= Intent(this,WishingScreen::class.java)
-            intent.putExtra("name",text)
+        button.setOnClickListener {
+            val name: String = editText.text.toString()
+            val intent = Intent(this, WishingScreen::class.java)
+            intent.putExtra("Name", name)
             startActivity(intent)
         }
-
-
     }
 }
